@@ -13,11 +13,20 @@ function App() {
         /> 
       </div>
       
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      
+      <Post 
+        username="stephenjohnblair" 
+        caption="Making an Instragram Clone!" 
+        imageUrl="https://mildaintrainings.com/wp-content/uploads/2017/11/react-logo.png" />
+      <Post 
+        username="testuser1" 
+        caption="Passing through props!"
+        imageUrl="https://cdn.freecodecamp.org/platform/universal/fcc-og-1200-social-green.png" />
+      <Post
+        username="testuser2" 
+        caption="Creating an app!"
+        imageUrl="https://firebase.google.com/images/brand-guidelines/logo-vertical.png" />
+
+
       {/* Posts */}
       {/* Posts */}
 
