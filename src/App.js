@@ -1,8 +1,18 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Post from './Post';
 import './App.css';
+import { db } from './firebase'
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  // useEffect runs a piece of code based on a specific condition
+
+  useEffect(() => {
+    db.collection('posts').onSnapshot(snapshot => {
+      setPosts(snapshot.docs.map(doc => doc.data()))
+    })
+  }, []);
   return (
     <div className="App">
       {/* Header */}
@@ -11,20 +21,14 @@ function App() {
         className="app__headerImage"src="https://www.instagram.com/static/images/web/mobile_nav_type_logo-2x.png/1b47f9d0e595.png"
         alt="instagram-logo"
         /> 
+        <h1>Let's build an Instagram clone!</h1>
       </div>
-      
-      <Post 
-        username="stephenjohnblair" 
-        caption="Making an Instragram Clone!" 
-        imageUrl="https://mildaintrainings.com/wp-content/uploads/2017/11/react-logo.png" />
-      <Post 
-        username="testuser1" 
-        caption="Passing through props!"
-        imageUrl="https://cdn.freecodecamp.org/platform/universal/fcc-og-1200-social-green.png" />
-      <Post
-        username="testuser2" 
-        caption="Creating an app!"
-        imageUrl="https://firebase.google.com/images/brand-guidelines/logo-vertical.png" />
+    
+      {
+        posts.map(post => (
+          <Post username={post.username} caption={post.caption} imageUrl={post.imageUrl} />
+        ))
+      } 
 
 
       {/* Posts */}
