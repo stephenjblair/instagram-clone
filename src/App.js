@@ -188,6 +188,8 @@ function App() {
           posts.map(({id, post}) => (
             <Post 
               key={id} 
+              postId={id}
+              user={user}
               username={post.username} 
               caption={post.caption} 
               imageUrl={post.imageUrl} 
@@ -197,7 +199,7 @@ function App() {
         </div>
         <div className="app__postsRight">
           <InstagramEmbed
-            url='https://instagr.am/p/Zw9o4/'
+            url='https://www.instagram.com/p/CFHtLyNHIWz/'
             maxWidth={320}
             hideCaption={false}
             containerTagName='div'
