@@ -5,6 +5,7 @@ import { db, auth } from './firebase';
 import { makeStyles } from '@material-ui/core/styles';
 import Modal from '@material-ui/core/Modal';
 import { Button, Input } from '@material-ui/core';
+import ImageUpload from './ImageUpload';
 
 function getModalStyle() {
   const top = 50;
@@ -78,6 +79,8 @@ function App() {
       })
     })
     .catch((error) => alert(error.message));
+
+    setOpen(false);
   }
 
   const signIn = (event) => {
@@ -86,11 +89,30 @@ function App() {
 
     auth
     .signInWithEmailAndPassword(email, password)
-    .catch((error) => alert(error.message))
+    .catch((error) => alert(error.message));
+
+    setOpenSignIn (false);
+
   }  
 
   return (
     <div className="App">
+      {user?.displayName ? (
+        <ImageUpload username={user.displayName} />
+      ): (
+        <h3>Please log in to upload</h3>
+      )}
+
+      
+        
+
+    
+
+      {/* I want to have ...
+      1. Caption input
+      2. File picker
+      3. Post button */}
+       
       <Modal
           open={open}
           onClose={() => setOpen(false)}
