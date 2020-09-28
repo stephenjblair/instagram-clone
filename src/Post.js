@@ -42,7 +42,7 @@ function Post({ postId, user, username, caption, imageUrl }) {
             <Avatar
                 className="post__avatar"
                 alt={username}
-                src='/static/images/avatar/1.jpg'
+                
             />
             <h3>{username} </h3>
             </div>
@@ -63,8 +63,8 @@ function Post({ postId, user, username, caption, imageUrl }) {
                     ))}
                 </div>
             }
-
-            <form className="post__commentBox">
+            {user && (
+                <form className="post__commentBox">
                 <input 
                     className="post__input"
                     type="text"
@@ -81,6 +81,8 @@ function Post({ postId, user, username, caption, imageUrl }) {
                     Post
                 </button>
             </form>
+            )}
+            
         </div>
     )
 }
